@@ -79,11 +79,11 @@
     }
 
     .logo-wrap {
-     width: clamp(95px, 9vw, 140px);
-     position: absolute;
-     top: 34px;
-     left: 6%;
-     z-index: 30;
+      width: clamp(95px, 9vw, 140px);
+      position: absolute;
+      top: 34px;
+      left: 6%;
+      z-index: 30;
     }
 
     .logo-wrap img {
@@ -192,12 +192,15 @@
     .hero-photo {
       position: relative;
       min-height: 100vh;
+
+      /* 사진이 왼쪽 바탕 위로 움직일 수 있게 */
       overflow: visible;
     }
 
     .hero-photo img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
       object-position: center;
 
@@ -205,36 +208,40 @@
       z-index: 2;
     }
 
-.hero-photo:hover img {
-  animation: photoBounce 2.0s ease-in-out;
-}
+    /* 메인 사진:
+       왼쪽으로 스윽 움직였다가 자동으로 돌아옴 */
+    .hero-photo:hover img {
+      animation: photoBounce 2s ease-in-out;
+    }
 
-@keyframes photoBounce {
-  0% {
-    transform: translateX(0);
-  }
+    @keyframes photoBounce {
 
-  15% {
-    transform: translateX(-1px);
-  }
+      0% {
+        transform: translateX(0);
+      }
 
-  40% {
-    transform: translateX(-15px);
-  }
+      15% {
+        transform: translateX(-1px);
+      }
 
-  55% {
-    transform: translateX(-15px);
-  }
+      40% {
+        transform: translateX(-15px);
+      }
 
-  80% {
-    transform: translateX(-2px);
-  }
+      55% {
+        transform: translateX(-15px);
+      }
 
-  100% {
-    transform: translateX(0);
-  }
-}
-}
+      80% {
+        transform: translateX(-2px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+
+    }
+
     .hero-photo::after {
       content: "";
       position: absolute;
@@ -246,6 +253,9 @@
           rgba(238, 231, 221, 0.35) 0%,
           rgba(238, 231, 221, 0) 22%
         );
+
+      pointer-events: none;
+      z-index: 3;
     }
 
 
@@ -256,8 +266,9 @@
     .intro {
       position: relative;
 
+      /* 첫 페이지와 오케스트라 사이 여백 */
       margin-top: 100px;
-      
+
       min-height: 680px;
 
       display: flex;
@@ -271,20 +282,21 @@
     .intro-orchestra {
       position: absolute;
 
-     top: -5%;
-  bottom: -5%;
-  left: -9%;
-  right: -9%;
+      top: -5%;
+      bottom: -5%;
+      left: -9%;
+      right: -9%;
 
-  background-image: url("orchestra.jpg");
-  background-size: cover;
-  background-position: center center;
+      background-image: url("orchestra.jpg");
+      background-size: cover;
+      background-position: center center;
 
-  filter:
-    grayscale(25%)
-    sepia(25%);
+      filter:
+        grayscale(25%)
+        sepia(25%);
 
-  transform: translateX(6%);
+      /* 지휘자가 중앙에 가까워지도록 */
+      transform: translateX(6%);
     }
 
     .intro-orchestra::after {
@@ -340,62 +352,71 @@
     ========================= */
 
     .story {
-      .story {
-  background: var(--light-cream);
+      background: var(--light-cream);
 
-  display: grid;
+      display: grid;
 
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+      /* Story 사진을 기존보다 크게 */
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(0, 0.75fr);
 
-  padding: 150px 5%;
+      padding: 150px 5%;
+      gap: 6%;
 
-  gap: 6%;
-
-  align-items: center;
+      align-items: center;
     }
 
     .story-image {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.story-image img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
     }
-.story-image:hover img {
-  animation: storyZoom 2.6s ease-in-out;
-}
 
-@keyframes storyZoom {
-  0% {
-    transform: scale(1);
-  }
+    .story-image img {
+      display: block;
+      width: 100%;
 
-  15% {
-    transform: scale(1.005);
-  }
+      aspect-ratio: 4 / 5;
 
-  40% {
-    transform: scale(1.04);
-  }
+      object-fit: cover;
+      object-position: center;
+    }
 
-  55% {
-    transform: scale(1.04);
-  }
+    /* Story 사진:
+       천천히 확대됐다가 자동으로 원위치 */
+    .story-image:hover img {
+      animation: storyZoom 2.6s ease-in-out;
+    }
 
-  80% {
-    transform: scale(1.01);
-  }
+    @keyframes storyZoom {
 
-  100% {
-    transform: scale(1);
-  }
-}
+      0% {
+        transform: scale(1);
+      }
+
+      15% {
+        transform: scale(1.005);
+      }
+
+      40% {
+        transform: scale(1.04);
+      }
+
+      55% {
+        transform: scale(1.04);
+      }
+
+      80% {
+        transform: scale(1.01);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+
+    }
+
     .section-number {
       font-family: "Cormorant Garamond", serif;
       font-size: 14px;
@@ -459,6 +480,7 @@
 
     .collection-photo {
       min-height: 650px;
+      overflow: hidden;
     }
 
     .collection-photo img {
@@ -466,6 +488,7 @@
       height: 100%;
 
       object-fit: cover;
+      object-position: center;
     }
 
     .collection-description {
@@ -679,6 +702,13 @@
 
       .hero-photo {
         min-height: 72vh;
+
+        /* 모바일에서는 사진이 화면 밖으로 튀지 않게 */
+        overflow: hidden;
+      }
+
+      .intro {
+        margin-top: 60px;
       }
 
       .story {
@@ -764,7 +794,7 @@
         음악과 함께 살아가는.<br>
         모든 순간을 위해.
         <br><br>
-        InstruCarved는 악기의 아름다움을
+        InstruCarved는 악기의 아름다움을<br>
         일상 속에 담아냅니다.
       </p>
 
@@ -887,7 +917,7 @@
 
         <img
           src="horn.jpg"
-          alt="InstruCarved Horn bag"
+          alt="InstruCarved collection"
         >
 
       </div>
@@ -906,10 +936,10 @@
 
         <p>
           음악을 사랑하는 사람들의 일상 속에
-         자연스럽게 스며드는 인스트로카브의 악보가방.
-         <br><br>
-         다양한 악기의 아름다움을 담아
-         각자의 취향과 음악을 표현합니다.
+          자연스럽게 스며드는 인스트로카브의 악보가방.
+          <br><br>
+          다양한 악기의 아름다움을 담아
+          각자의 취향과 음악을 표현합니다.
         </p>
 
         <a
