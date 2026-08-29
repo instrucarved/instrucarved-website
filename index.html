@@ -219,11 +219,11 @@
   }
 
   40% {
-    transform: translateX(-11px);
+    transform: translateX(-15px);
   }
 
   55% {
-    transform: translateX(-11px);
+    transform: translateX(-15px);
   }
 
   80% {
@@ -340,25 +340,62 @@
     ========================= */
 
     .story {
-      background: var(--light-cream);
+      .story {
+  background: var(--light-cream);
 
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+  display: grid;
 
-      padding: 150px 8%;
-      gap: 10%;
-      align-items: center;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+
+  padding: 150px 5%;
+
+  gap: 6%;
+
+  align-items: center;
     }
 
     .story-image {
-      overflow: hidden;
-    }
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
 
-    .story-image img {
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
+.story-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
     }
+.story-image:hover img {
+  animation: storyZoom 2.6s ease-in-out;
+}
 
+@keyframes storyZoom {
+  0% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.005);
+  }
+
+  40% {
+    transform: scale(1.04);
+  }
+
+  55% {
+    transform: scale(1.04);
+  }
+
+  80% {
+    transform: scale(1.01);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
     .section-number {
       font-family: "Cormorant Garamond", serif;
       font-size: 14px;
