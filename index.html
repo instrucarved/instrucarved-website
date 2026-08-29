@@ -384,87 +384,48 @@
 /* 커서를 올리면 사진 가장자리가
    스르륵 흩어졌다가 자동으로 원래대로 돌아옴 */
 
-.story-image:hover img {
-  animation: storyMask 2.8s ease-in-out;
+.story-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.story-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
 }
 
 
-@keyframes storyMask {
+/* 가장자리 페이드 레이어 */
+.story-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 
-  /* 처음: 원래 사진 */
-  0% {
-    -webkit-mask-image: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at center,
-      black 100%,
-      transparent 100%
+      rgba(246, 241, 234, 0) 45%,
+      rgba(246, 241, 234, 0.08) 58%,
+      rgba(246, 241, 234, 0.22) 70%,
+      rgba(246, 241, 234, 0.55) 84%,
+      rgba(246, 241, 234, 1) 100%
     );
 
-    mask-image: radial-gradient(
-      ellipse at center,
-      black 100%,
-      transparent 100%
-    );
-  }
+  opacity: 0;
+
+  transition:
+    opacity 2.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 
-  /* 가장자리가 서서히 흩어짐 */
-  40% {
-    -webkit-mask-image: radial-gradient(
-      ellipse at center,
-      black 30%,
-      rgba(0,0,0,0.9) 65%,
-      rgba(0,0,0,0.55) 78%,
-      rgba(0,0,0,0.2) 90%,
-      transparent 100%
-    );
-
-    mask-image: radial-gradient(
-      ellipse at center,
-      black 55%,
-      rgba(0,0,0,0.9) 65%,
-      rgba(0,0,0,0.55) 78%,
-      rgba(0,0,0,0.2) 90%,
-      transparent 100%
-    );
-  }
-
-
-  /* 잠깐 유지 */
-  60% {
-    -webkit-mask-image: radial-gradient(
-      ellipse at center,
-      black 55%,
-      rgba(0,0,0,0.9) 65%,
-      rgba(0,0,0,0.55) 78%,
-      rgba(0,0,0,0.2) 90%,
-      transparent 100%
-    );
-
-    mask-image: radial-gradient(
-      ellipse at center,
-      black 55%,
-      rgba(0,0,0,0.9) 65%,
-      rgba(0,0,0,0.55) 78%,
-      rgba(0,0,0,0.2) 90%,
-      transparent 100%
-    );
-  }
-
-
-  /* 다시 원래 사진으로 */
-  100% {
-    -webkit-mask-image: radial-gradient(
-      ellipse at center,
-      black 100%,
-      transparent 100%
-    );
-
-    mask-image: radial-gradient(
-      ellipse at center,
-      black 100%,
-      transparent 100%
-    );
-  }
+/* 커서를 올리면 천천히 가장자리가 녹음 */
+.story-image:hover::after {
+  opacity: 1;
 }
      
     .section-number {
