@@ -192,7 +192,7 @@
     .hero-photo {
       position: relative;
       min-height: 100vh;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero-photo img {
@@ -200,10 +200,13 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+
+      position: relative;
+      z-index: 2;
     }
 
 .hero-photo:hover img {
-  animation: photoBounce 3.5s ease-in-out;
+  animation: photoBounce 2.5s ease-in-out;
 }
 
 @keyframes photoBounce {
