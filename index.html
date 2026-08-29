@@ -202,8 +202,8 @@
       object-position: center;
     }
 
-    .hero-photo:hover img {
-  animation: photoBounce 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+.hero-photo:hover img {
+  animation: photoBounce 3.5s ease-in-out;
 }
 
 @keyframes photoBounce {
@@ -211,13 +211,26 @@
     transform: translateX(0);
   }
 
-  35% {
-    transform: translateX(-8px);
+  15% {
+    transform: translateX(-1px);
+  }
+
+  40% {
+    transform: translateX(-7px);
+  }
+
+  55% {
+    transform: translateX(-7px);
+  }
+
+  80% {
+    transform: translateX(-2px);
   }
 
   100% {
     transform: translateX(0);
   }
+}
 }
     .hero-photo::after {
       content: "";
