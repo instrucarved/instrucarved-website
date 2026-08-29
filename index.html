@@ -230,11 +230,17 @@
 
     .intro-orchestra {
       position: absolute;
-      inset: 0;
 
+      top: 0;
+  bottom: 0;
+
+  /* 사진 자체를 오른쪽으로 이동 */
+  left: 9%;
+  right: -9%;
+      
       background-image: url("orchestra.jpg");
       background-size: cover;
-      background-position: 120% center;
+      background-position: 80% center;
 
       filter:
         grayscale(25%)
