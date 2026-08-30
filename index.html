@@ -19,6 +19,22 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+KR:wght@300;400;500&display=swap"
     rel="stylesheet"
   >
+/* =========================
+   CONTENT PROTECTION
+========================= */
+
+/* 텍스트 선택/드래그 방지 */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* 이미지 선택/드래그 방지 */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 
   <style>
 
@@ -1063,6 +1079,19 @@
 
   </footer>
 
+  <script>
+  // 우클릭 메뉴 방지
+  document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+  });
+
+  // 이미지 드래그 방지
+  document.addEventListener("dragstart", function(e) {
+    if (e.target.tagName === "IMG") {
+      e.preventDefault();
+    }
+  });
+</script>
 
 </body>
 </html>
